@@ -87,17 +87,13 @@ class StockData:
             }
     
     def get_all_news_flat(self, page=1, per_page=10):
-        """获取真实新闻数据"""
+        """获取真实新闻数据 - 必须配置环境变量"""
         try:
-            # 使用环境变量中的API密钥（生产环境必须有，本地可回退）
             api_key = os.environ.get("NEWS_API_KEY")
             if not api_key:
-                # 本地开发环境使用模拟数据
-                print("⚠️ 未设置NEWS_API_KEY环境变量，使用模拟数据")
-                return self.get_mock_news(page, per_page)
+                return []  # 没有API密钥时返回空数组
             
-            # 如果环境变量中有API密钥，使用真实NewsAPI
-            if os.environ.get("NEWS_API_KEY"):
+            # 使用真实NewsAPI
                 from datetime import datetime, timedelta
                 import pytz
                 
