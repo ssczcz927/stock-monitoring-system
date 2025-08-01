@@ -1,0 +1,475 @@
+/* 现代化设计系统 */
+:root {
+    --primary-blue: #1a73e8;
+    --secondary-blue: #4285f4;
+    --success-green: #34a853;
+    --warning-orange: #fbbc04;
+    --error-red: #ea4335;
+    --neutral-gray: #5f6368;
+    --light-gray: #f8f9fa;
+    --border-gray: #e8eaed;
+    --text-primary: #202124;
+    --text-secondary: #5f6368;
+    --text-muted: #80868b;
+    --background-white: #ffffff;
+    --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.12);
+    --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    color: var(--text-primary);
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* 现代化头部 */
+.header {
+    background: var(--background-white);
+    border-bottom: 1px solid var(--border-gray);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow-light);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    color: var(--text-primary);
+    font-size: 24px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header h1 i {
+    color: var(--primary-blue);
+}
+
+.last-update {
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.refresh-btn {
+    background: var(--primary-blue);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.refresh-btn:hover {
+    background: var(--secondary-blue);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-medium);
+}
+
+.refresh-btn:active {
+    transform: translateY(0);
+}
+
+/* 现代化主内容 */
+.main {
+    padding: 32px 0;
+    min-height: 100vh;
+}
+
+.section {
+    margin-bottom: 48px;
+}
+
+.section h2 {
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    font-size: 28px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section h2 i {
+    color: var(--primary-blue);
+}
+
+/* 现代化股票卡片 */
+.stock-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+}
+
+.stock-card {
+    background: var(--background-white);
+    border: 1px solid var(--border-gray);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-light);
+}
+
+.stock-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--primary-blue);
+}
+
+.stock-symbol {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stock-price {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    font-family: 'Inter', sans-serif;
+}
+
+.stock-change {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.stock-change.positive {
+    background: rgba(52, 168, 83, 0.1);
+    color: var(--success-green);
+}
+
+.stock-change.negative {
+    background: rgba(234, 67, 53, 0.1);
+    color: var(--error-red);
+}
+
+.stock-time {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+/* 现代化新闻流 */
+.modern-news-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.news-card-modern {
+    background: var(--background-white);
+    border: 1px solid var(--border-gray);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 16px;
+    transition: all 0.2s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    box-shadow: var(--shadow-light);
+    cursor: pointer;
+}
+
+.news-card-modern:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-heavy);
+    border-color: var(--primary-blue);
+}
+
+.news-card-modern.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.news-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.news-title-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.news-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--primary-blue);
+    line-height: 1.4;
+    margin: 0;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.news-title:hover {
+    color: var(--secondary-blue);
+    text-decoration: underline;
+}
+
+.news-summary {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.news-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 12px;
+}
+
+.news-meta .source {
+    font-weight: 500;
+    color: var(--primary-blue);
+}
+
+.news-meta .time {
+    color: var(--text-muted);
+}
+
+.news-meta .sentiment {
+    font-size: 16px;
+}
+
+.news-meta .sentiment.positive {
+    color: var(--success-green);
+}
+
+.news-meta .sentiment.neutral {
+    color: var(--warning-orange);
+}
+
+.news-meta .sentiment.negative {
+    color: var(--error-red);
+}
+
+.loading-more {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.loading-more i {
+    margin-right: 8px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.error-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--error-red);
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* 系统状态 */
+.system-status {
+    background: var(--background-white);
+    border: 1px solid var(--border-gray);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 32px 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: var(--shadow-light);
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.status-item .label {
+    font-weight: 500;
+}
+
+.status-item .status {
+    font-weight: 600;
+}
+
+.status-item .status.online {
+    color: var(--success-green);
+}
+
+.status-item .status.active {
+    color: var(--success-green);
+}
+
+/* 回到顶部按钮 */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: var(--shadow-heavy);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.back-to-top.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--secondary-blue);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+/* Toast通知 - 顶部中央显示 */
+.toast {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: var(--background-white);
+    color: var(--text-primary);
+    padding: 16px 32px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-heavy);
+    border-left: 4px solid var(--success-green);
+    z-index: 1001;
+    opacity: 0;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    max-width: 400px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast-error {
+    border-left-color: var(--error-red);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    .stock-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .stock-card {
+        padding: 20px;
+    }
+    
+    .news-card-modern {
+        padding: 20px;
+        margin-bottom: 12px;
+    }
+    
+    .news-title {
+        font-size: 18px;
+    }
+    
+    .news-summary {
+        font-size: 14px;
+    }
+    
+    .system-status {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 16px;
+    }
+}
+
+/* 加载动画 */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

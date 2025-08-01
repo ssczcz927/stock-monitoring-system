@@ -1,0 +1,32 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "main.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/main.py"
+    },
+    {
+      "src": "/frontend/(.*)",
+      "dest": "/frontend/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/main.py"
+    }
+  ],
+  "functions": {
+    "main.py": {
+      "runtime": "python3.9"
+    }
+  },
+  "env": {
+    "NEWS_API_KEY": "@news-api-key",
+    "FLASK_ENV": "production"
+  }
+}

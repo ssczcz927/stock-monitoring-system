@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>股票实时监控系统</title>
+    <link rel="stylesheet" href="frontend/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1><i class="fas fa-chart-line"></i> 股票实时监控系统</h1>
+            <div class="last-update">
+                最后更新: <span id="lastUpdate">加载中...</span>
+                <button id="refreshBtn" class="refresh-btn">
+                    <i class="fas fa-sync-alt"></i> 手动刷新
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- 股票实时价格 -->
+            <section class="stock-prices">
+                <h2><i class="fas fa-dollar-sign"></i> 实时股价</h2>
+                <div class="stock-grid" id="stockGrid">
+                    <div class="loading">加载中...</div>
+                </div>
+            </section>
+
+            <!-- 现代化新闻流 -->
+            <section class="section">
+                <h2><i class="fas fa-newspaper"></i> 实时新闻流</h2>
+                <div class="modern-news-container">
+                    <div class="news-container" id="newsContainer">
+                        <div class="loading">加载中...</div>
+                    </div>
+                    <div class="loading-more" id="loadingMore" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i> 加载更多新闻...
+                    </div>
+                </div>
+            </section>
+
+            <!-- 系统状态 -->
+            <div class="system-status">
+                <div class="status-item">
+                    <span class="label">系统状态:</span>
+                    <span id="systemStatus" class="status online">运行正常</span>
+                </div>
+                <div class="status-item">
+                    <span class="label">自动刷新:</span>
+                    <span id="autoRefresh" class="status active">已启用 (60秒)</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 回到顶部按钮 -->
+    <button id="backToTop" class="back-to-top" style="display: none;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 股票实时监控系统 - 关注RDDT TSLA UBER COIN CADL
+                <br>
+                <small>数据仅供参考，投资有风险，入市需谨慎</small>
+            </p>
+        </div>
+    </footer>
+
+    <script src="frontend/js/stock-monitor.js"></script>
+    <script src="frontend/js/news-stream-simple.js"></script>
+</body>
+</html>
