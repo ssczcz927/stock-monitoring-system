@@ -89,8 +89,12 @@ class StockData:
     def get_all_news_flat(self, page=1, per_page=10):
         """获取真实新闻数据"""
         try:
-            # 使用环境变量中的API密钥
-            api_key = os.environ.get("NEWS_API_KEY", "0a41b0e0bebc4c0eb6e2e5fb55678304")
+            # 使用环境变量中的API密钥（生产环境必须有，本地可回退）
+            api_key = os.environ.get("NEWS_API_KEY")
+            if not api_key:
+                # 本地开发环境使用模拟数据
+                print("⚠️ 未设置NEWS_API_KEY环境变量，使用模拟数据")
+                return self.get_mock_news(page, per_page)
             
             # 如果环境变量中有API密钥，使用真实NewsAPI
             if os.environ.get("NEWS_API_KEY"):
@@ -219,6 +223,51 @@ class StockData:
         except Exception as e:
             print(f"获取新闻失败: {e}")
             return []
+    
+    def get_mock_news(self, page=1, per_page=10):
+        """获取模拟新闻数据用于本地开发"""
+        mock_news = [
+            {
+                'title': 'Tesla股价因自动驾驶技术突破上涨5%',
+                'summary': '特斯拉最新的FSD v12版本在测试中表现出色，投资者信心增强，股价应声上涨',
+                'source': '路透社',
+                'url': '#',
+                'sentiment': 'positive',
+                'timestamp': int((datetime.now().timestamp() - 3600) * 1000),
+                'beijing_time': (datetime.now() - timedelta(hours=1)).strftime('%m-%d %H:%M'),
+                'date_group': '今天'
+            },
+            {
+                'title': 'Reddit广告收入超预期，用户增长强劲',
+                'summary': 'Reddit最新财报显示广告收入同比增长45%，超出分析师预期',
+                'source': 'CNBC',
+                'url': '#',
+                'sentiment': 'positive',
+                'timestamp': int((datetime.now().timestamp() - 7200) * 1000),
+                'beijing_time': (datetime.now() - timedelta(hours=2)).strftime('%m-%d %H:%M'),
+                'date_group': '今天'
+            },
+            {
+                'title': 'Uber宣布扩大自动驾驶车队规模至10万辆',
+                'summary': '优步计划在2025年将自动驾驶车队扩大至10万辆，投资50亿美元',
+                'source': '彭博社',
+                'url': '#',
+                'sentiment': 'positive',
+                'timestamp': int((datetime.now().timestamp() - 10800) * 1000),
+                'beijing_time': (datetime.now() - timedelta(hours=3)).strftime('%m-%d %H:%M'),
+                'date_group': '今天'
+            }
+        ]
+        
+        mock_news.sort(key=lambda x: x['timestamp'], reverse=True)
+        total_count = len(mock_news)
+        start = (page - 1) * per_page
+        end = min(start + per_page, total_count)
+        
+        if start >= total_count:
+            return []
+        
+        return mock_news[start:end]
 
 # 初始化
 data_service = StockData()
